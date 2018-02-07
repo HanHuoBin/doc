@@ -1,8 +1,13 @@
 # 用户相关
 
-## 注册
+ * [注册](#register)
+ * [登录](#login)
+ * [忘记密码](#forget)
+ * [发送验证码](#sendsms)
 
-  POST /api/public/register
+<h2 id="register">注册</h2>
+
+  POST /api/v1/public/register
 
 ** 请求参数 **
 
@@ -11,6 +16,14 @@
 |mobile|手机号|String|是|
 |code|验证码|String|是|
 |password|密码|String|是|
+
+```json
+{
+  "mobile": "18757110824",
+  "code": "348980",
+  "password": "123456"
+}
+```
 
 ** 返回参数 **
 
@@ -31,16 +44,24 @@
 
 
 
-## 登录
+<h2 id="login">登录</h2>
 
-  POST /api/public/register
+  POST /api/v1/public/register
 
 ** 请求参数 **
 
 |参数名称|说明|类型|是否必须|
 |---|---|---|---|
-|username|用户名|String|是|
+|mobile|用户名|String|是|
 |password|密码|String|是|
+
+
+```json
+{
+  "username": "18757110824",
+  "password": "e10adc3949ba59abbe56e057f20f883e"
+}
+```
 
 ** 返回参数 **
 
@@ -69,9 +90,9 @@
 }
 ```
 
-## 忘记密码
+<h2 id="forget">忘记密码</h2>
 
-  POST /api/public/forget
+  POST /api/v1/public/forget
 
 ** 请求参数 **
 
@@ -81,6 +102,13 @@
 |code|验证码|String|是|
 |password|密码|String|是|
 
+```json
+{
+  "mobile": "18757110824",
+  "password": "96e79218965eb72c92a549dd5a330112",
+  "code": "447135"
+}
+```
 
 ** 返回参数 **
 
@@ -88,9 +116,20 @@
 |---|---|---|---|
 |status|1表示成功|int|是|
 
-## 发送验证码
+```json
+{
+  "bool": 1,
+  "msg": "修改密码成功",
+  "code": 200,
+  "data": {
+    "status": 1
+  }
+}
+```
 
-  POST /api/public/sendsms
+<h2 id="sendsms">发送验证码</h2>
+
+  POST /api/v1/public/sendsms
 
 ** 请求参数 **
 
@@ -101,6 +140,14 @@
 
 说明：
   * type 1：注册，2：忘记密码
+
+```json
+{
+  "mobile": "18757110824",
+  "type": "2"
+}
+```
+
 
 ** 返回参数 **
 
